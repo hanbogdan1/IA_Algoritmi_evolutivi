@@ -4,13 +4,14 @@
 #include <assert.h>
 #include <time.h>
 
-
+typedef std::vector<int> cromozom;
 
 class evolutiv {
 	int nr_thread;
 	int nr_procese;
 	int nr_colonie;
 	std::vector<std::vector<int>> colonie;
+
 public:
 	evolutiv() {
 		srand(time(NULL));
@@ -26,8 +27,11 @@ public:
 	}
 
 
-	//incrucisare cu n pct de taietura
+	void generare_matrice() {
 
+	}
+
+	//incrucisare cu n pct de taietura
 	void taietura(std::vector<int> &cromA, std::vector<int> &cromB) {
 		int taietura = rand() % cromA.size();
 
@@ -44,8 +48,23 @@ public:
 		}
 	}
 
-	
+	//mutatia random resetting
+	void mutatia_tare(cromozom& crom) {
+		int probabilitate = rand() % 101;
+		for (auto &x : crom) {
+			int prob = rand() % 101;
+			if (prob < probabilitate)
+				x = rand() % nr_thread;
+		}
+	}
+
 
 	
 
 };
+
+
+int main() {
+	
+	return 0;
+}
