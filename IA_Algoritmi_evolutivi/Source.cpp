@@ -18,6 +18,7 @@ public:
 		g.open("putput.txt");
 		srand(time(NULL));
 		citire_date();
+		generare_matrice();
 		generare_colonie();
 	}
 
@@ -28,6 +29,7 @@ public:
 		f >> nr_procese;
 		f >> nr_colonie;
 		f.close();
+
 	}
 
 	void generare_matrice() {
@@ -38,12 +40,13 @@ public:
 			}
 			matrice.push_back(timp_linie);
 		}
+
 	}
 
 
 	void generare_cromozom(cromozom &x ) {
-		for (auto procesor = 0; procesor < nr_thread; procesor++) {
-				x.push_back(rand() % 101);
+		for (auto procesor = 0; procesor < nr_procese; procesor++) {
+				x.push_back(rand() % nr_thread);
 			}
 	}
 
@@ -67,7 +70,7 @@ public:
 	int fitness(cromozom&x) {
 		int suma = 0;
 		for (int i = 0; i < x.size(); i++) {
-			suma += matrice[0][x[i]];
+			suma += matrice[i][x[i]];
 		}
 		return suma;
 	}
@@ -106,7 +109,7 @@ public:
 
 	void inserare_colonie(cromozom vect) {
 			int i = 0;
-			for (; i < colonie.size(); i++) {
+			for (;i < colonie.size(); i++) {
 				if (comp(colonie[i], vect))
 					break;
 			}
@@ -146,8 +149,8 @@ public:
 			colonie.pop_back();
 			colonie.pop_back();
 
-			colonie.push_back(First_best);
-			colonie.push_back(Second_best);
+			inserare_colonie(First_best);
+			inserare_colonie(Second_best);
 			afisare_fitness_colonie();
 		}
 
