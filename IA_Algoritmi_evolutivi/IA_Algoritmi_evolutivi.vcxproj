@@ -114,6 +114,7 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="inp.txt" />
+    <Text Include="putput.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
