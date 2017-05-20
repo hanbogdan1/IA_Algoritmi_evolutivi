@@ -15,6 +15,7 @@ public:
 	std::vector<std::vector<int>> matrice;
 	std::vector<std::vector<int>> colonie;
 	std::ofstream g;
+	int nt_particule;
 	evolutiv() {
 		g.open("putput.txt");
 		srand(1);
@@ -31,6 +32,7 @@ public:
 		f >> nr_thread;
 		f >> nr_procese;
 		f >> nr_colonie;
+		f >> nt_particule;
 		f.close();
 
 	}
@@ -161,6 +163,13 @@ public:
 		}
 
 	}
+
+	void pso() {
+		for (auto i = 0; i < nt_particule; i++) {
+
+		}
+
+	}
 };
 
 
@@ -181,9 +190,3 @@ void test() {
 
 }
 
-int main() {
-	evolutiv a;
-	a.rezolvare();
-	//test();
-	return 0;
-}
